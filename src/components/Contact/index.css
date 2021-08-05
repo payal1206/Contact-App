@@ -1,0 +1,111 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+.try{
+	background-image: url("./open1.png");
+}
+
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #EEE;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/* header {
+	
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	padding: 15px;
+	background-color: #3c3c3c;
+	
+} */
+
+header h1 {
+	color: #EEE;
+	font-size: 28px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.contactarray {
+	width: 90%;
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.contactarray .contact {
+	margin: 15px;
+	padding: 15px;
+	background-color: #FFF;
+	border-radius: 8px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.contactarray .contact .contact-question {
+	position: relative;
+	font-size: 25px;
+	padding-right: 50px;
+
+	transition: all 0.4s ease;
+}
+
+.contactarray .contact .contact-question::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: 0px;
+	transform: translateY(-50%);
+	width: 45px;
+	height: 100px;
+	background-image: url("./open1.png");
+
+	/* background-image: url('./arrow-down-mint.svg'); */
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+
+	transition: all 0.4s ease-out;
+}
+
+.contactarray .contact .contact-answer {
+	opacity: 0;
+	max-height: 0;
+	overflow-y: hidden;
+	transition: all 0.4s ease-out;
+}
+
+.contactarray .contact.open .contact-question {
+	margin-bottom: 10px;
+
+}
+
+.contactarray .contact.open .contact-question::after {
+	transform: translateY(-50%) rotate(180deg);
+}
+
+.contactarray .contact.open .contact-answer {
+	max-height: 1000px;
+	opacity: 1;
+	font-size: 25px;
+
+}
+.background {
+	background: url(./helpbg.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+  }
