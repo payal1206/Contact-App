@@ -3,12 +3,38 @@ import { Paper, rgbToHex, Grid } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
-import { Gradient } from "@material-ui/icons";
+import { Edit, Gradient } from "@material-ui/icons";
+import EditContact from "./editcontact";
+import { Modal } from "antd";
+// import Fab from "@material-ui/core/Fab";
 
 function Contact({ contact, index, toggleContact }) {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
   const [elevate, setElevate] = useState(0);
   return (
     <>
+      <Modal
+        title="EDIT CONTACt"
+        visible={isModalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <EditContact />
+      </Modal>
+
       <Paper
         elevation={elevate}
         onMouseEnter={() => setElevate(20)}
@@ -43,6 +69,7 @@ function Contact({ contact, index, toggleContact }) {
                   }}
                 />
                 <EditIcon
+                  onClick={showModal}
                   style={{
                     fontSize: "40px",
                   }}
@@ -52,7 +79,7 @@ function Contact({ contact, index, toggleContact }) {
             </Grid>
           </div>
           <div className="contact-answer">
-            <b>Phone-</b> {contact.phone}
+            <b>Phone Number-</b> {contact.phone}
           </div>
         </div>
       </Paper>

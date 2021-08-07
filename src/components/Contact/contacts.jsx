@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { Paper, rgbToHex } from "@material-ui/core";
 import Contact from "./contact";
-// import "./index.css";
+import "./index.css";
 import { Modal } from "antd";
+import Fab from "@material-ui/core/Fab";
+import AddIcon from "@material-ui/icons/Add";
+import AddContact from "./addcontact";
+
 import Button from "@material-ui/core/Button";
-export default function Contacts(props) {
+export default function Contacts() {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const showModal = () => {
@@ -54,14 +58,12 @@ export default function Contacts(props) {
       <div className="background">
         <div className="contactarray">
           <Modal
-            title="Basic Modal"
-            visible={true}
+            title="ADD CONTACT"
+            visible={isModalVisible}
             onOk={handleOk}
             onCancel={handleCancel}
           >
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
+            <AddContact />
           </Modal>
           {contactarray.map((contact, i) => (
             <Contact
@@ -70,9 +72,9 @@ export default function Contacts(props) {
               toggleContact={toggleContact}
             />
           ))}
-          <Button type="primary" onClick={showModal}>
-            ADD CONTACT
-          </Button>
+          <Fab onClick={showModal} color="primary" aria-label="add">
+            <AddIcon />
+          </Fab>
         </div>
       </div>
     </>
