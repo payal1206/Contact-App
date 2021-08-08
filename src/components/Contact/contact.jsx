@@ -8,7 +8,7 @@ import EditContact from "./editcontact";
 import { Modal } from "antd";
 // import Fab from "@material-ui/core/Fab";
 
-function Contact({ contact, index, toggleContact }) {
+function Contact({ contact, index, toggleContact, handleDelete }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const showModal = () => {
@@ -27,7 +27,7 @@ function Contact({ contact, index, toggleContact }) {
   return (
     <>
       <Modal
-        title="EDIT CONTACt"
+        title="EDIT CONTACT"
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
@@ -54,16 +54,16 @@ function Contact({ contact, index, toggleContact }) {
             <Grid
               container
               direction="row"
-              justify="space-between"
-              alignItems="center"
+              // justify="space-between"
+              // alignItems="center"
             >
               <Grid xs={10}>
                 {" "}
-                <b>Name -</b>
-                {contact.name}
+                <b>{contact.username}</b>
               </Grid>
               <Grid xs={2}>
                 <DeleteIcon
+                  onClick={handleDelete}
                   style={{
                     fontSize: "40px",
                   }}
@@ -78,9 +78,7 @@ function Contact({ contact, index, toggleContact }) {
               </Grid>
             </Grid>
           </div>
-          <div className="contact-answer">
-            <b>Phone Number-</b> {contact.phone}
-          </div>
+          <div className="contact-answer">{contact.contact}</div>
         </div>
       </Paper>
     </>
