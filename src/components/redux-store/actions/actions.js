@@ -20,4 +20,11 @@ const editcontact = (data) => {
     payload: data,
   };
 };
-export { ADD_CONTACT, DELETE_CONTACT, Addcontact, deletecontact, editcontact };
+export {
+  ADD_CONTACT,
+  DELETE_CONTACT,
+  EDIT_CONTACT,
+  Addcontact,
+  deletecontact,
+  editcontact,
+};

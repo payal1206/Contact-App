@@ -46,12 +46,20 @@ function Contacts(props) {
       <div className="background">
         <div className="contactarray">
           <Modal
+            style={{
+              backgroundColor: "royalblue",
+              fontStyle: "-moz-initial",
+            }}
             title="ADD CONTACT"
             visible={isModalVisible}
             onOk={handleOk}
             onCancel={handleCancel}
           >
-            <AddContact />
+            <AddContact
+              style={{
+                fontSize: "90px",
+              }}
+            />{" "}
           </Modal>
           {props.contacts.map((contact, i) => (
             <Contact
@@ -59,6 +67,7 @@ function Contacts(props) {
               index={i}
               toggleContact={toggleContact}
               handleDelete={() => props.handleDelete(contact.id)}
+              // handleEdit={() => props.handleEdit(contact.id)}
             />
           ))}
           <Fab onClick={showModal} color="primary" aria-label="add">

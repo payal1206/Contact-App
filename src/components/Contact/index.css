@@ -2,9 +2,12 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	
+
 }
 .try{
 	background-image: url("./open1.png");
+	/* background-color: rgb(240, 17, 17); */
 }
 
 
@@ -14,7 +17,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #EEE;
+  background-color: rgb(240, 17, 17);
 }
 
 code {
@@ -33,7 +36,7 @@ code {
 } */
 
 header h1 {
-	color: #EEE;
+	color: rgb(238, 238, 238);
 	font-size: 28px;
 	font-weight: 700;
 	text-transform: uppercase;
@@ -48,16 +51,20 @@ header h1 {
 
 .contactarray .contact {
 	margin: 15px;
-	padding: 15px;
-	background-color: #FFF;
-	border-radius: 8px;
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+	padding: 11px;
+	/* background-color:hsl(214, 86%, 66%); */
+	border-radius: 15px;
+	box-shadow: 0px 0px 10px rgba(240, 6, 18, 0.2);
+	/* background-color:#d25b5b70 */
+	background :linear-gradient(45deg,  rgba(85, 85, 250, 0.8),  rgb(255, 0, 0,0.8));
+	
 }
 
 .contactarray .contact .contact-question {
 	position: relative;
-	font-size: 25px;
-	padding-right: 50px;
+	font-size: 30px;
+	/* padding-right: 0px; */
+	align-items: flex-start;
 
 	transition: all 0.4s ease;
 }
@@ -68,16 +75,21 @@ header h1 {
 	top: 50%;
 	left: 0px;
 	transform: translateY(-50%);
+	/* background-color: #f1666614; */
 	width: 45px;
 	height: 100px;
+	align-items: flex-start;
 	background-image: url("./open1.png");
-
-	/* background-image: url('./arrow-down-mint.svg'); */
 	background-position: center;
 	background-size: contain;
 	background-repeat: no-repeat;
 
 	transition: all 0.4s ease-out;
+}
+MuiPaper-root {
+    color: rgba(0, 0, 0, 0.87);
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    background-color: #5f5d5d12;
 }
 
 .contactarray .contact .contact-answer {
@@ -85,10 +97,13 @@ header h1 {
 	max-height: 0;
 	overflow-y: hidden;
 	transition: all 0.4s ease-out;
+	align-items:initial
 }
 
 .contactarray .contact.open .contact-question {
 	margin-bottom: 10px;
+	background-color: #f1666614;
+	align-items: inherit;
 
 }
 
@@ -98,6 +113,7 @@ header h1 {
 
 .contactarray .contact.open .contact-answer {
 	max-height: 1000px;
+	align-self:flex-start;
 	opacity: 1;
 	font-size: 25px;
 

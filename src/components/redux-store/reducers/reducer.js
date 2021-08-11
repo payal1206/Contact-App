@@ -1,4 +1,5 @@
-import { ADD_CONTACT, DELETE_CONTACT } from "../actions/actions";
+import Edit from "@material-ui/icons/Edit";
+import { ADD_CONTACT, DELETE_CONTACT, EDIT_CONTACT } from "../actions/actions";
 const initialState = [];
 
 const Reducer = (state = initialState, action) => {
@@ -7,6 +8,12 @@ const Reducer = (state = initialState, action) => {
       return [...state, action.payload]; // state + payload data
     case DELETE_CONTACT:
       return state.filter((contact) => contact.id !== action.payload); // removes the record with same id as payload as it will return false if it is same as id.. and remove
+    case EDIT_CONTACT:
+      return state.map((contact) =>
+        contact.id === action.payload.id
+          ? { ...contact, ...action.payload }
+          : contact
+      );
     default:
       return state;
   }

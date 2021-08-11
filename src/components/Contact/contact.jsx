@@ -7,6 +7,7 @@ import { Edit, Gradient } from "@material-ui/icons";
 import EditContact from "./editcontact";
 import { Modal } from "antd";
 // import Fab from "@material-ui/core/Fab";
+import PermContactCalendarIcon from "@material-ui/icons/PermContactCalendar";
 
 function Contact({ contact, index, toggleContact, handleDelete }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -27,14 +28,22 @@ function Contact({ contact, index, toggleContact, handleDelete }) {
   return (
     <>
       <Modal
+        style={{
+          backgroundColor: "royalblue",
+          fontStyle: "-moz-initial",
+        }}
         title="EDIT CONTACT"
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <EditContact />
+        <EditContact
+          namePlaceholder={contact.username}
+          contactPlaceholder={contact.contact}
+          contactId={contact.id}
+        />
       </Modal>
-
+      {/* 
       <Paper
         elevation={elevate}
         onMouseEnter={() => setElevate(20)}
@@ -44,43 +53,59 @@ function Contact({ contact, index, toggleContact, handleDelete }) {
           borderRadius: "10px",
           border: "0.2px solid #6A1B9A",
         }}
+      > */}
+      <div
+        className={"contact " + (contact.open ? "open" : "")}
+        key={index}
+        onClick={() => toggleContact(index)}
       >
-        <div
-          className={"contact " + (contact.open ? "open" : "")}
-          key={index}
-          onClick={() => toggleContact(index)}
-        >
-          <div className="contact-question">
+        <div className="contact-question">
+          <Grid
+            container
+            direction="row"
+            // justify="space-between"
+          >
             <Grid
-              container
-              direction="row"
-              // justify="space-between"
-              // alignItems="center"
+              xs={10}
+              alignItems="right"
+              style={{
+                textAlign: "left",
+                paddingLeft: "50px",
+                color: "#fff",
+              }}
             >
-              <Grid xs={10}>
-                {" "}
-                <b>{contact.username}</b>
-              </Grid>
-              <Grid xs={2}>
-                <DeleteIcon
-                  onClick={handleDelete}
-                  style={{
-                    fontSize: "40px",
-                  }}
-                />
-                <EditIcon
-                  onClick={showModal}
-                  style={{
-                    fontSize: "40px",
-                  }}
-                />
-                <div className="try"> </div>
-              </Grid>
+              {" "}
+              <b>{contact.username}</b>
             </Grid>
-          </div>
-          <div className="contact-answer">{contact.contact}</div>
+            <Grid xs={2} justify="space-between" alignItems="center">
+              <DeleteIcon
+                onClick={handleDelete}
+                style={{
+                  fontSize: "40px",
+                }}
+              />
+              <EditIcon
+                onClick={showModal}
+                style={{
+                  fontSize: "40px",
+                }}
+              />
+              <div className="try"> </div>
+            </Grid>
+          </Grid>
         </div>
-      </Paper>
+        <div
+          style={{
+            textAlign: "left",
+            paddingLeft: "100px",
+          }}
+          className="contact-answer"
+        >
+          <PermContactCalendarIcon />
+          <b> {contact.contact}</b>
+        </div>
+      </div>
+      {/* </Paper> */}
     </>
   );
 }
